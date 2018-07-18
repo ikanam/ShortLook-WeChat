@@ -3,7 +3,7 @@ Name: WeChat Contact Photos for ShortLook
 Depends: mobilesubstrate, co.dynastic.ios.tweak.shortlook
 Version: 1.0
 Architecture: iphoneos-arm
-Description: ShortLook for WeChat.
+Description: WeChat Contact Photos for ShortLook.
 Maintainer: Jianan Tian
 Author: Jianan Tian
 Section: Tweaks (ShortLook)
