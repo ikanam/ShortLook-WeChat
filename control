@@ -1,9 +1,10 @@
 Package: com.jerrytian.shortlook.plugin.contact-photo.wechat
 Name: WeChat Contact Photos for ShortLook
 Depends: mobilesubstrate, co.dynastic.ios.tweak.shortlook
-Version: 1.0
+Version: 1.0.1
 Architecture: iphoneos-arm
 Description: WeChat Contact Photos for ShortLook.
 Maintainer: Jianan Tian
 Author: Jianan Tian
 Section: Tweaks (ShortLook)
+Depiction: https://username.github.io/repo/depictions/?p=com.jerrytian.shortlook.plugin.contact-photo.wechat

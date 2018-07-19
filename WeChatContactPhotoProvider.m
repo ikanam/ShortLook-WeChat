@@ -1,11 +1,19 @@
 #import "WeChatContactPhotoProvider.h"
 #import <CommonCrypto/CommonDigest.h>
 
+@interface FBApplicationInfo
+-(NSURL *)dataContainerURL;
+@end
+
+@interface LSApplicationProxy
++(id)applicationProxyForIdentifier:(id)arg1;
+@end
+
 @implementation WeChatContactPhotoProvider
 
 - (DDNotificationContactPhotoPromiseOffer *)contactPhotoPromiseOfferForNotification:(DDUserNotification *)notification {
-    
-    NSString *appPath = [self getApplicationPathWithBundleID:@"com.tencent.xin"];
+    FBApplicationInfo *appinfo = [LSApplicationProxy applicationProxyForIdentifier:@"com.tencent.xin"];
+    NSString *appPath = [[appinfo dataContainerURL] path];
     NSString *contactID = notification.applicationUserInfo[@"u"];
     if (!contactID) return nil;
     
@@ -40,26 +48,6 @@
     if (!profileURL) return nil;
     
     return [NSClassFromString(@"DDNotificationContactPhotoPromiseOffer") offerDownloadingPromiseWithPhotoIdentifier:profileURLStr fromURL:profileURL];
-}
-
-- (NSString*)getApplicationPathWithBundleID:(NSString*)bundleID {
-    NSFileManager *fileManger = [NSFileManager defaultManager];
-    NSArray *dirs = [fileManger contentsOfDirectoryAtPath:@"/private/var/mobile/Containers/Data/Application" error:nil];
-    for (NSString *dirName in dirs) {
-        NSString *appPath = [NSString stringWithFormat:@"/private/var/mobile/Containers/Data/Application/%@", dirName];
-        NSString *appMetaDataPath = [NSString stringWithFormat:@"%@/.com.apple.mobile_container_manager.metadata.plist",appPath];
-        BOOL isExist = [fileManger fileExistsAtPath:appMetaDataPath isDirectory:false];
-        if (isExist) {
-            NSDictionary *metadataInfo = [NSDictionary dictionaryWithContentsOfFile:appMetaDataPath];
-            if (metadataInfo) {
-                NSString *appBundleID = metadataInfo[@"MCMMetadataIdentifier"];
-                if ([appBundleID isEqual:bundleID]) {
-                    return appPath;
-                }
-            }
-        }
-    }
-    return @"";
 }
 
 - (NSString *)getAvatarURLInData:(NSData *)data{
