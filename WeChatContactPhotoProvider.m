@@ -43,6 +43,12 @@
     }
     sqlite3_close(db);
     
+    NSRange range = [profileURLStr rangeOfString:@"/132" options:NSBackwardsSearch];
+    if (range.location != NSNotFound) {
+        //替换为高清头像
+        profileURLStr = [profileURLStr stringByReplacingCharactersInRange:range withString:@"/0"];
+    }
+    
     if (!profileURLStr) return nil;
     NSURL *profileURL = [NSURL URLWithString:profileURLStr];
     if (!profileURL) return nil;

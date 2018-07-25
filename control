@@ -1,9 +1,9 @@
 Package: com.jerrytian.shortlook.plugin.contact-photo.wechat
-Name: WeChat Contact Photos for ShortLook
+Name: WeChat Profile Pictures for ShortLook
 Depends: mobilesubstrate, co.dynastic.ios.tweak.shortlook
-Version: 1.0.1
+Version: 1.0.2
 Architecture: iphoneos-arm
-Description: WeChat Contact Photos for ShortLook.
+Description: Show WeChat users' profile pictures in ShortLook when you receive a WeChat notification!
 Maintainer: Jianan Tian
 Author: Jianan Tian
 Section: Tweaks (ShortLook)

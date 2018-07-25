@@ -41,7 +41,7 @@
 /// The background colour to show for the contact photo view if the provided image contains any transparency.
 @property (nonatomic, retain) UIColor *backgroundColor;
 
-/// Whether or not ShortLook should automatically cache icons returned by your provider with the same photo identifier for the same application.
+/// Whether or not ShortLook should automatically cache the returned image from your provider and use it for all future notifications with the same photo identifier and application.
 @property (nonatomic, assign) BOOL usesCaching;
 @end
 
@@ -69,8 +69,14 @@
 /// A unique identifier for the photo that will be provided by this promise.
 @property (nonatomic, readonly, retain) NSString *photoIdentifier;
 
-/// A string to replace the notification's title with, if it is required for your provider's context.
+/// A string to replace the notification's title with, if it is required for your provider's context. Set to "" to remove the provided notification's title.
 @property (nonatomic, retain) NSString *titleOverride;
+
+/// A string to replace the notification's subtitle with, if it is required for your provider's context. Set to "" to remove the provided notification's subtitle.
+@property (nonatomic, retain) NSString *subtitleOverride;
+
+/// A string to replace the notification's body with, if it is required for your provider's context. Set to "" to remove the provided notification's body.
+@property (nonatomic, retain) NSString *bodyOverride;
 
 /// Initialize a promise with the provided photo identifier.
 - (instancetype)initWithPhotoIdentifier:(NSString *)photoIdentifier;

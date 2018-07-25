@@ -1,3 +1,6 @@
+
+PACKAGE_VERSION = 1.0.2
+DEBUG = 0
 ARCHS = armv7 arm64
 
 include $(THEOS)/makefiles/common.mk
@@ -11,8 +14,6 @@ $(BUNDLE_NAME)_INSTALL_PATH = /Library/Dynastic/ShortLook/Plugins/ContactPhotoPr
 include $(THEOS_MAKE_PATH)/bundle.mk
 
 BUNDLE_PATH = $($(BUNDLE_NAME)_INSTALL_PATH)/$(BUNDLE_NAME).bundle
-
-PACKAGE_VERSION=$(THEOS_PACKAGE_BASE_VERSION)
 
 internal-stage::
 	$(ECHO_NOTHING)mkdir -p $(THEOS_STAGING_DIR)$(BUNDLE_PATH)$(ECHO_END)
